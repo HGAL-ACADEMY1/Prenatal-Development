@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Natal Development Lecture</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET & BASE STYLES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #121212; /* Deep Charcoal */
+            background-image: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+            color: #e0e0e0; /* High contrast, soft white */
+            font-family: 'Merriweather', serif;
+            font-size: 26px; /* Large, readable font */
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- SCROLL PROGRESS BAR --- */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: #2c2c2c;
+            z-index: 1000;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+            width: 0%;
+            border-radius: 0 4px 4px 0;
+            transition: width 0.1s ease-out;
+        }
+
+        /* --- LAYOUT CONTAINER --- */
+        .container {
+            max-width: 750px; /* Optimal reading width like a chat */
+            margin: 0 auto;
+            padding: 40px 20px 100px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px; /* Space between "bubbles" of text */
+        }
+
+        /* --- LOGO STYLING --- */
+        .logo-container {
+            text-align: center;
+            margin-bottom: 40px;
+            opacity: 0; 
+            animation: fadeInLogo 1.5s ease-out forwards;
+        }
+
+        .logo-img {
+            max-width: 100%;
+            height: auto;
+            /* While the source is large, we constrain it visually but keep clarity */
+            width: 250px; 
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+        }
+
+        /* --- TYPOGRAPHY STYLING --- */
+        p {
+            margin-bottom: 20px;
+            color: #d1d1d1;
+        }
+
+        /* Highlight styles for bold terms */
+        strong {
+            color: #ffffff;
+            font-weight: 700;
+            border-bottom: 2px solid rgba(79, 172, 254, 0.3); /* Subtle underline */
+        }
+
+        /* Chat-style aesthetic adjustments */
+        .chat-block {
+            /* No background cards, just flow, but we use this class for animation targeting */
+            position: relative;
+        }
+
+        /* --- ANIMATIONS --- */
+        /* The "Pop" effect class */
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .reveal-text.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        @keyframes fadeInLogo {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- VIP SECTION STYLES --- */
+        .vip-container {
+            margin-top: 50px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px dashed #333;
+        }
+
+        .vip-text {
+            font-size: 26px;
+            font-style: italic;
+            color: #ffd700; /* Gold for VIP */
+            margin-bottom: 20px;
+        }
+
+        .vip-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff512f, #dd2476);
+            color: white;
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-family: 'Merriweather', sans-serif; /* Cleaner font for button */
+            font-weight: bold;
+            font-size: 22px;
+            box-shadow: 0 4px 15px rgba(221, 36, 118, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            animation: pulse 2s infinite;
+            border: none;
+            cursor: pointer;
+        }
+
+        .vip-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(221, 36, 118, 0.6);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(221, 36, 118, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(221, 36, 118, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(221, 36, 118, 0); }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            body { font-size: 20px; }
+            .container { padding: 20px 15px; }
+            .vip-button { width: 100%; padding: 15px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="container">
+        <!-- Branding -->
+        <div class="logo-container">
+            <img src="https://i.imgur.com/eP0BFrd.png" alt="HGAL Academy Logo" class="logo-img">
+        </div>
+
+        <!-- LECTURE CONTENT START -->
+        
+        <div class="reveal-text">
+            <p>Hello there! 👋 Welcome to today's class. I am so excited to take you on a journey through one of the most magical processes in nature. Today, we are learning about <strong>Pre-natal Development</strong>.</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>Now, "Pre-natal" might sound like a big, fancy word, but it simply means the period of development <strong>before birth</strong>. 🤰</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>This whole journey begins with something called <strong>Conception</strong>. This is the exact moment when a male sperm cell meets and unites with—or fertilizes—a female egg cell. 🥚💫 That moment marks the very beginning.</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>This period spans roughly <strong>nine calendar months</strong>, or about 265 days. (Give or take about 14 days, because nature isn't always exact!). It is a time of super-fast growth. 🚀</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>Interestingly, every baby is different! The shortest time a fetus can spend inside and still be born alive is about <strong>180 days</strong>. On the other hand, the longest time—which is considered the legal limit of "post-maturity"—is <strong>334 days</strong>. That’s a long time to wait!</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>Okay, let’s now move on to how this time is divided. 🕒 The pre-natal period isn't just one long wait; it happens in three distinct stages:</p>
+            <p>1️⃣ <strong>The Germinal Stage</strong><br>
+            2️⃣ <strong>The Embryonic Stage</strong><br>
+            3️⃣ <strong>The Fetal Stage</strong></p>
+        </div>
+
+        <div class="reveal-text">
+            <p>Let's dive into the first one.</p>
+        </div>
+
+        <div class="reveal-text">
+            <p><strong>1. The Germinal Stage (Fertilization to 2 Weeks)</strong> 🌱</p>
+            <p>This stage kicks off the moment the sperm fertilizes the egg. It is actually the <strong>shortest stage</strong> of the entire pre-natal period, lasting only about two weeks.</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>During this time, the new organism is called a <strong>Zygote</strong>. Think of the zygote like a tiny traveler. 🧳 It travels towards the uterus. Once it arrives, it implants itself right into the wall of the uterus.</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>Why the uterus wall? Because it is incredibly rich in nutrients that the zygote needs to grow! 🥘</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>Even though it's short, this stage is busy! The internal structure of the zygote changes significantly. It is characterized by <strong>rapid cell division</strong>. One cell becomes two, two become four, and so on!</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>Not only do the cells increase in number, but they also become <strong>specialized</strong>. The mass of cells separates into outer and inner parts. Some form a protective layer, while others begin building the <strong>placenta</strong> and the <strong>umbilical cord</strong>.</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>Imagine the placenta as a lifeline 🔌. It connects the mother and the baby. It provides food and oxygen through the umbilical cord, and it also takes away waste materials. Pretty efficient, right?</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>Now that we understand the beginning, let’s talk about the next phase.</p>
+        </div>
+
+        <div class="reveal-text">
+            <p><strong>2. The Embryonic Stage (2 Weeks to 8 Weeks)</strong> 🏗️</p>
+            <p>This stage starts at the end of two weeks and goes until the end of the second month. By now, the organism is firmly attached to the mother’s uterus wall. At this point, we stop calling it a zygote and start calling it an <strong>Embryo</strong>.</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>The major highlight here is the building of the body! 🛠️ The major organs and body systems start to form. The "embryonic disc" splits into three special layers:</p>
+            <p>🔹 <strong>The Ectoderm</strong> (Outer Layer)<br>
+            🔹 <strong>The Mesoderm</strong> (Middle Layer)<br>
+            🔹 <strong>The Endoderm</strong> (Inner Layer)</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>Let me explain what each layer builds:</p>
+            <p>The <strong>Ectoderm</strong> (Outer) forms the skin, hair, nails, teeth, sense organs, and very importantly, the <strong>brain and spinal cord</strong>. 🧠</p>
+            <p>The <strong>Mesoderm</strong> (Middle) creates the inner skin, muscles, bones, blood, and the circulatory system. 💪</p>
+            <p>The <strong>Endoderm</strong> (Inner) produces the digestive system, pancreas, and thymus. 🥖</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>Every single part of the human body comes from just these three layers! It is a time of very rapid and orderly change. By the end of this stage, the embryo actually looks like a <strong>miniature human being</strong>. 👶 All basic organs are there. However, we still can't tell if it's a boy or a girl just yet.</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>Let’s now look at the final and longest stage.</p>
+        </div>
+
+        <div class="reveal-text">
+            <p><strong>3. The Fetal Stage (8 Weeks to Birth)</strong> 🏃‍♂️</p>
+            <p>This stage lasts from about 8 weeks all the way until birth. The child is now instantly recognizable as a human and is called a <strong>Fetus</strong>.</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>Changes happen incredibly fast here! The fetus increases in length about <strong>20 times</strong>. 📏 Its proportions change dramatically too. At the start, the head is huge—about half the size of the body! By birth, the head is only about one-quarter of the total size.</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>Organs become more complex and start working. For example, at 3 months, the fetus can actually swallow and urinate. Arms grow hands, hands grow fingers, and fingers grow nails. 💅</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>This is also when the fetus says "Hello!" to the outside world by moving. By 4 months, the mother can feel the baby kicking. 👣 The fetus can turn, somersault, cry, hiccup, open its eyes, and even suck its thumb!</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>Did you know the fetus can hear? 👂 It responds to taste, smell, touch, and sound. It has even been proven that a fetus can recognize sounds it has heard repeatedly!</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>During the last three months (the third trimester), the brain grows rapidly. The heart and lungs get strong enough to survive outside. Growth stops about 5 to 7 days before birth, and the baby drops into position for delivery. 🏥</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>At this point, it’s important to consider <strong>Critical Periods</strong>. ⚠️</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>Critical periods are specific times when delicate organs are being formed. If the environment inside the womb isn't right during these times, serious abnormalities or deformities can happen (like issues with the heart, limbs, or eyes).</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>Let's look at the three specific critical periods:</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>1️⃣ <strong>The First Trimester (First 3 Months)</strong><br>
+            Since the organs are just forming, this is when defects in the heart, brain (central nervous system), eyes, and limbs are most likely to occur if something goes wrong.</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>2️⃣ <strong>The Seventh Month</strong><br>
+            By now, the fetus is "viable"—meaning it could survive if born early (pre-term). For this to happen, the brain must be developed enough to control breathing and body temperature.</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>3️⃣ <strong>The Ninth Month</strong><br>
+            Ideally, the baby is ready. But complications can still happen, like a narrow pelvis or the baby being in the wrong position. In developing countries like Nigeria, factors like poverty and poor healthcare make this a very critical time.</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>Next, we’ll look at <strong>Factors Influencing Pre-natal Development</strong>. What affects the baby?</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>Many things in the fetal environment matter, such as:</p>
+            <p>🥦 <strong>Mother’s Diet:</strong><br>
+            Food is fuel! A mother eating nutrient-rich food has fewer complications and a healthier baby. Lack of protein or vitamins can lead to defects in the baby's eyes or internal organs.</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>📅 <strong>Mother’s Age:</strong><br>
+            Age matters. Teenage mothers face higher risks of premature delivery. On the other side, older mothers (especially over 40) are more likely to have babies with Down Syndrome.</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>🤒 <strong>Mother’s Illness:</strong><br>
+            Diseases are dangerous. In many areas, diseases like Rubella, HIV, Chicken Pox, or Syphilis are common. If a pregnant woman gets Rubella before the 11th week, it can cause blindness or heart defects in the baby. HIV can cause brain deterioration.</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>💊 <strong>Mother’s Drug Use:</strong><br>
+            This is very serious. Even doctor-prescribed medicine can be risky. For example, in the 1950s, women took a drug called <strong>Thalidomide</strong> for morning sickness. Sadly, they gave birth to children with stumps instead of arms and legs because the drug stopped limb growth. 😔</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>Illicit drugs like Cocaine restrict blood flow to the fetus, which can be fatal. Alcohol is also dangerous—it can lead to lower intelligence and behavioral problems. That is why doctors say: <strong>No alcohol and no smoking during pregnancy.</strong> 🚭🍷</p>
+        </div>
+
+        <div class="reveal-text">
+            <p>And that brings us to the end of our lesson on Pre-natal Development! I hope you found this journey fascinating.</p>
+        </div>
+
+        <!-- VIP SECTION CONTINUOUS -->
+        <div class="reveal-text vip-container">
+            <p>Join our VIP if you're yet to, for more study materials and other bonuses (worth #115,000).</p>
+            <p class="vip-text">For more details click below 👇</p>
+            <a href="https://tinyurl.com/2dbtvx2b" target="_blank" class="vip-button">click Here</a>
+        </div>
+
+    </div>
+
+    <script>
+        // --- SCROLL PROGRESS BAR LOGIC ---
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        };
+
+        // --- SCROLL REVEAL ANIMATION LOGIC ---
+        // We use IntersectionObserver to detect when elements enter the screen
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the item is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Optional: Stop observing once revealed if you don't want it to re-animate
+                    // observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Target all text elements
+        const textElements = document.querySelectorAll('.reveal-text');
+        textElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+                                                                                   </html>
